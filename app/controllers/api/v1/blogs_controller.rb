@@ -5,7 +5,7 @@ module Api
       before_action :authorize_user
 
       def index
-        blogs = current_user.blogs
+        blogs = current_user.blogs.page(params[:page]).per(10)
         render json: blogs
       end
 

@@ -12,6 +12,8 @@
       <li><%= blog.content %></li>
     <% end %>
   </ul>
+
+  <%= paginate @blogs %>
 <% else %>
   <p>No blogs found.</p>
 <% end %>
