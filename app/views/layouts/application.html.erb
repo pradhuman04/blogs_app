@@ -8,38 +8,39 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <style>
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #f0f0f0;
-      }
-      .navbar-right {
-        display: flex;
-        align-items: center;
-      }
-      .navbar-right a {
-        margin-left: 10px;
-      }
-    </style>
   </head>
 
   <body>
-    <div class="navbar">
-      <div class="navbar-right">
-        <% if current_user %>
-          <%= button_to 'Logout', logout_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Login', login_path %>
-          <%= link_to 'Signup', new_user_path %>
-        <% end %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <% if current_user %>
+              <li class="nav-item">
+                <%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-outline-danger my-3 my-sm-0' %>
+              </li>
+            <% else %>
+              <% if current_page?(login_path) %>
+                <li class="nav-item">
+                  <%= link_to 'Signup', new_user_path, class: 'btn btn-outline-success my-3 my-sm-0' %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to 'Login', login_path, class: 'btn btn-outline-primary my-3 my-sm-0 mr-2' %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
+    </nav>
 
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
   
