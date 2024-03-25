@@ -1,0 +1,17 @@
+<% if flash[:alert] %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<% if @blogs.any? %>
+  <h1>My Blogs</h1>
+  <ul>
+    <% @blogs.each do |blog| %>
+      <li><%= blog.title %></li>
+      <li><%= blog.content %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No blogs found.</p>
+<% end %>
