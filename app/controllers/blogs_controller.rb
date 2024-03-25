@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_action :require_login
 
   def index
-    @blogs = current_user.blogs.page(params[:page]).per(1)
+    @blogs = current_user.blogs.page(params[:page]).per(10)
   end
 
   private
