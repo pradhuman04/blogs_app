@@ -4,7 +4,6 @@ RSpec.describe SessionsController, type: :controller do
   describe 'GET #new' do
     context 'when user is not logged in' do
       it 'renders the new template' do
-        allow(controller).to receive(:current_user).and_return(nil)
         get :new
         expect(response).to render_template(:new)
       end
